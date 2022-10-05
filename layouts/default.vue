@@ -5,7 +5,8 @@
       fixed
       app
     >
-      <v-toolbar-title v-text="title" />
+    <v-spacer></v-spacer>
+      <v-toolbar-title v-text="title" class="" />
       <v-spacer />
       
     </v-app-bar>
@@ -19,7 +20,8 @@
       :absolute="!fixed"
       app
     >
-      <span>&copy; Mutual Fund Viewer - {{ new Date().getFullYear() }}</span>
+      <span>Mutual Fund Viewer &copy; {{ new Date().getFullYear() }}</span>
+      <span class="spotlight">made with ❤️ by <a style="text-decoration: none; color:;" href="https://github.com/Sarveshk76">@Sarveshk76</a></span>
     </v-footer>
   </v-app>
 </template>
@@ -53,3 +55,9 @@ export default {
   
 }
 </script>
+<style>
+  .spotlight {
+    position:absolute;
+    right: 10px;
+  }
+</style>

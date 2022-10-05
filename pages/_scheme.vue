@@ -1,16 +1,16 @@
 <template>
   <div>
-    <v-card id="back" class="mt-5 text-center pa-3">
+    <v-card id="back" class="text-center pa-3">
       <button   @click="goBack">
      Back
     </button>
     </v-card>
-    <v-card class="mt-5  pa-3" id="fundname">
+    <v-card class="mt-8 text-center pa-3" id="fundname">
       Fund Name : {{fund_house}}
     </v-card>
   <v-row >
     
-    <v-col class="text-center mt-15 " align="center" id="chart">
+    <v-col class="text-center mt-10 " align="center" id="chart">
       <v-card  align="center">
       <apexchart type="line" height="350" :options="options" :series="series"></apexchart>
     </v-card>
@@ -21,6 +21,7 @@
 </template>
   
   <script>
+    import { mapActions } from 'vuex';
     import axios from 'axios';
     export default {
       name: 'InspirePage',
@@ -59,10 +60,6 @@
           fund_house: [],
         };
       },
-      async asyncData({ params }) {
-        const scheme = params.scheme // When calling /abc the slug will be "abc"
-        return { scheme }
-      },
       methods: {
         mydatecon(d) {
       const c = d.split('-')
@@ -70,11 +67,14 @@
     },
       goBack() {
         this.$router.go(-1)
-      }
+      },
+      ...mapActions(['asyncData']),
     
       },
       created() {
-        const output = axios.get("https://api.mfapi.in/mf/"+this.scheme).then((data) => {this.mfs = data.data.data, this.fund_house = data.data.meta.fund_house})
+        const scheme = this.$route.params.scheme;
+        ;
+        const output = axios.get("https://api.mfapi.in/mf/"+scheme).then((data) => {this.mfs = data.data.data, this.fund_house = data.data.meta.fund_house})
         .then((s) => {
           
           for (var i = 0; i < this.mfs.length; i++) {
@@ -82,6 +82,7 @@
             this.series[0].data.push({x: date, y: this.mfs[i].nav});
           }
         })
+        
       },
     }
     </script>
@@ -96,19 +97,17 @@
     #back{
       background-color: #3f51b5;
       color: white;
-      border-radius: 30px;
+      border-radius: 15px;
       padding: 10px;
-      transition: all 0.3s ease;
       width: 70px;
       position:absolute;
     }
     #fundname{
       color: #3f51b5;
-      border-radius: 30px;
+      border-radius: 15px;
       padding: 10px;
-      transition: all 0.3s ease;
-      width: 70%;
-      position:absolute;
-      margin-left: 15%;
+      width: 60%;
+      position:relative;
+      margin-left: 25%;
     }
     </style>

@@ -48,7 +48,7 @@ export default {
 <style scoped>
   #card{
     transition: all 0.3s ease;
-    border-radius: 30px;
+    border-radius: 15px;
   }
 #card:hover{
   transform: scale(1.1);

@@ -30,7 +30,6 @@ export default {
   router: {
     base: '/MFViewer/'
   },
-  mode: 'spa',
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
