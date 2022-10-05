@@ -21,7 +21,7 @@
 </template>
   
   <script>
-    import { mapActions } from 'vuex';
+    import { mapActions, mapGetters } from 'vuex';
     import axios from 'axios';
     export default {
       name: 'InspirePage',
@@ -56,9 +56,12 @@
               data: []
             }
           ],
+          fund_house: '',
           mfs: [],
-          fund_house: [],
         };
+      },
+      computed: {
+        ...mapGetters(["mfs", "fund_house"]),
       },
       methods: {
         mydatecon(d) {
@@ -68,12 +71,11 @@
       goBack() {
         this.$router.go(-1)
       },
-      ...mapActions(['asyncData']),
+      // ...mapActions(['get_mfdata']),
     
       },
       created() {
         const scheme = this.$route.params.scheme;
-        ;
         const output = axios.get("https://api.mfapi.in/mf/"+scheme).then((data) => {this.mfs = data.data.data, this.fund_house = data.data.meta.fund_house})
         .then((s) => {
           
@@ -83,7 +85,7 @@
           }
         })
         
-      },
+       },
     }
     </script>
     <style scoped>
