@@ -1,44 +1,60 @@
 <template>
   <div>
-      
-      <v-container fluid grid-list-sm>
-          <v-layout row wrap>
-            <v-flex  class="d-flex pa-3" xs12 sm3 offset-sm v-for="mf in mf_list" :value="mf.id" :key="mf.id">
-              <v-card id="card" elevation="4"   @click="$router.push(`/${mf.schemeCode}`)"  align="center">
-        <v-card-subtitle class="font-weight-medium black-text">
-          Scheme Name : <br/> {{mf.schemeName}} <br/> 
-        </v-card-subtitle>
-        <v-card-subtitle>
-          Scheme Code : <br/> {{mf.schemeCode}}
-        </v-card-subtitle>
-        <v-spacer />
-      </v-card>
-            </v-flex>
-          </v-layout>
-        </v-container>
 
-    
+    <v-container fluid grid-list-sm>
+      <v-card class="searchBar" justify="center">
+        <v-list-item-content>
+          <v-text-field class="centered-input" v-model="searchTerm" placeholder="Search" @change="searchFunds">
+          </v-text-field>
+          {{this.$store.state.args}}
+        </v-list-item-content>
+      </v-card>
+      <v-layout row wrap>
+
+        <v-flex class="d-flex pa-3" xs12 sm3 offset-sm v-for="mf in mf_list" :value="mf.id" :key="mf.id">
+
+          <v-card id="card" elevation="4" @click="$router.push(`/${mf.schemeCode}`)" align="center">
+            <v-card-subtitle class="font-weight-medium black-text">
+              Scheme Name : <br /> {{mf.schemeName}} <br />
+            </v-card-subtitle>
+            <v-card-subtitle>
+              Scheme Code : <br /> {{mf.schemeCode}}
+            </v-card-subtitle>
+            <v-spacer />
+          </v-card>
+        </v-flex>
+      </v-layout>
+    </v-container>
+
+
 
   </div>
 </template>
 
 <script>
-  import { mapGetters, mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'IndexPage',
   computed: {
-    ...mapGetters(["mf_list"])
+    ...mapGetters(["mf_list"]),
+
+
   },
 
   methods: {
     ...mapActions(['get_mf_list']),
+    searchFunds(e) {
+      console.log('searching: ' + this.searchTerm)
+      this.mf_list = this.get_mf_list(this.searchTerm)
+    }
   },
   data() {
     return {
-      schemecode: []
+      schemecode: [],
+      searchTerm: ''
     }
   },
-  created () {
+  created() {
     this.get_mf_list()
   }
 }
@@ -46,11 +62,25 @@ export default {
 
 </script>
 <style scoped>
-  #card{
-    transition: all 0.3s ease;
-    border-radius: 15px;
-  }
-#card:hover{
+#card {
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s ease;
+  border-radius: 15px;
+}
+
+#card:hover {
   transform: scale(1.1);
+}
+
+.searchBar {
+  width: 100%;
+  margin: auto;
+  margin-bottom: 20px;
+  border-radius: 15px;
+}
+
+.centered-input>>>input {
+  text-align: center
 }
 </style>
