@@ -4,9 +4,10 @@
     <v-container fluid grid-list-sm>
       <v-card class="searchBar" justify="center">
         <v-list-item-content>
-          <v-text-field class="centered-input" v-model="searchTerm" placeholder="Search" @change="searchFunds">
+          <v-text-field class="centered-input " v-model="searchTerm" placeholder="Search" @change="searchFunds">
           </v-text-field>
           {{this.$store.state.args}}
+          <v-icon color="#009B81">mdi-magnify</v-icon>
         </v-list-item-content>
       </v-card>
       <v-layout row wrap>
@@ -14,11 +15,13 @@
         <v-flex class="d-flex pa-3" xs12 sm3 offset-sm v-for="mf in mf_list" :value="mf.id" :key="mf.id">
 
           <v-card id="card" elevation="4" @click="$router.push(`/${mf.schemeCode}`)" align="center">
-            <v-card-subtitle class="font-weight-medium black-text">
-              Scheme Name : <br /> {{mf.schemeName}} <br />
+            <v-icon large
+      color="teal lighten-2" id="icon">mdi-finance</v-icon>
+            <v-card-subtitle class="font-weight-medium teal--text ">
+              <br /> {{mf.schemeName}} <br />
             </v-card-subtitle>
-            <v-card-subtitle>
-              Scheme Code : <br /> {{mf.schemeCode}}
+            <v-card-subtitle class="font-weight-medium black--text">
+              <br /> {{mf.schemeCode}}
             </v-card-subtitle>
             <v-spacer />
           </v-card>
@@ -37,8 +40,6 @@ export default {
   name: 'IndexPage',
   computed: {
     ...mapGetters(["mf_list"]),
-
-
   },
 
   methods: {
@@ -51,7 +52,7 @@ export default {
   data() {
     return {
       schemecode: [],
-      searchTerm: ''
+      searchTerm: '',
     }
   },
   created() {
@@ -62,6 +63,7 @@ export default {
 
 </script>
 <style scoped>
+  
 #card {
   width: 100%;
   height: 100%;
@@ -79,7 +81,7 @@ export default {
   margin-bottom: 20px;
   border-radius: 15px;
 }
-
+.v-text-field >>> .v-input__slot::before  { border-color:#009B81 !important; }
 .centered-input>>>input {
   text-align: center
 }

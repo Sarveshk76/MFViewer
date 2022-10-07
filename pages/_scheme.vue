@@ -1,12 +1,12 @@
 <template>
   <div>
-    <v-card id="back" class="text-center pa-3">
+    <v-card id="back" class="text-center pa-3 teal">
       <button @click="goBack">
         Back
       </button>
     </v-card>
-    <v-card class="mt-8 text-center pa-3" id="fundname">
-      Fund Name : {{fund_house}}
+    <v-card class="mt-8 text-center pa-3 font-weight-medium teal--text" id="fundname">
+      {{fund_house}}
     </v-card>
     <v-row>
 
@@ -34,7 +34,11 @@ export default {
       },
       options: {
         chart: {
-          id: 'vuechart-example'
+          id: 'vuechart-example',
+        },
+        colors: ['#009B81'],
+        stroke: {
+          curve: 'smooth',
         },
         xaxis: {
           type: 'datetime',
@@ -47,7 +51,14 @@ export default {
               hour: 'HH:mm'
             }
           },
-        }
+        },
+        tooltip: {
+              shared: false,
+              x: {
+            show: true,
+            format: "dd MMM yyyy",
+            }
+            }
       },
       series: [
         {
@@ -55,6 +66,7 @@ export default {
           data: []
         }
       ],
+
     };
   },
   computed: {
@@ -71,20 +83,17 @@ export default {
     const scheme = this.$route.params.scheme;
     this.get_mfdata(scheme);
     this.series[0].data = this.mfs;
-    this.series[0].data
+    
 
   },
 }
 </script>
 <style scoped>
 #chart {
-  transition: all 0.3s ease;
   border-radius: 30px;
 }
 
-#chart:hover {
-  transform: scale(1.02);
-}
+
 
 #back {
   background-color: #3f51b5;

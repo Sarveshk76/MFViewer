@@ -1,17 +1,17 @@
 <template>
-  <v-app dark>
+  <v-app dark >
     <v-app-bar
       :clipped-left="clipped"
       fixed
       app
     >
     <v-spacer></v-spacer>
-      <v-toolbar-title v-text="title" class="" />
+      <v-toolbar-title class="font-weight-medium teal--text" v-text="title" />
       <v-spacer />
       
     </v-app-bar>
     <v-main>
-      <v-container>
+      <v-container >
         <Nuxt />
       </v-container>
     </v-main>
@@ -19,9 +19,12 @@
     <v-footer
       :absolute="!fixed"
       app
+      height="80"
+      style="display: flex; justify-content: space-between; align-items: center;"
     >
-      <span>Mutual Fund Viewer &copy; {{ new Date().getFullYear() }}</span>
-      <span class="spotlight">made with ❤️ by <a style="text-decoration: none; color:;" href="https://github.com/Sarveshk76">@Sarveshk76</a></span>
+      <span class=" font-weight-medium teal--text ">Mutual Fund Viewer &copy; {{ new Date().getFullYear() }}</span>
+      <span class=" ">Powered by <a class="font-weight-medium teal--text" style="text-decoration: none;" href="https://www.mfapi.in/" target="_blank">MF API</a></span>
+      <span class=" ">made with ❤️ by <a class="font-weight-medium teal--text" style="text-decoration: none;" href="https://github.com/Sarveshk76">@Sarveshk76</a></span>
     </v-footer>
   </v-app>
 </template>
@@ -55,9 +58,15 @@ export default {
   
 }
 </script>
-<style>
+<style scoped>
   .spotlight {
-    position:absolute;
-    right: 10px;
+    position:relative;
+    right: -10px;
+    display: flex;
+  justify-content: space-between;
+  }
+  .copywrite {
+    position:relative;
+    left: 10px;
   }
 </style>
