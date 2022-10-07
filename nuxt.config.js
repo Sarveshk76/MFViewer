@@ -57,8 +57,11 @@ export default {
   pwa: {
     manifest: {
       lang: 'en'
-    }
+    },
+    meta: {
+      name: 'MF Viewer',  
   },
+},
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
