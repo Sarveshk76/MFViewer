@@ -20,7 +20,7 @@
             <v-card-subtitle class="font-weight-medium teal--text ">
               <br /> {{mf.schemeName}} <br />
             </v-card-subtitle>
-            <v-card-subtitle class="font-weight-medium black--text">
+            <v-card-subtitle class="font-weight-medium">
               <br /> {{mf.schemeCode}}
             </v-card-subtitle>
             <v-spacer />

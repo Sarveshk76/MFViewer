@@ -44,14 +44,67 @@ export default {
           type: 'datetime',
           labels: {
             format: 'dd MMM yyyy',
+            style: {
+              colors: '#009B81',
+            },
             datetimeFormatter: {
               year: 'yyyy',
               month: 'MMM \'yy',
               day: 'dd MMM',
               hour: 'HH:mm'
-            }
+            },
           },
+          axisBorder: {
+          show: true,
+          color: '#009B81',
+          offsetX: 0,
+          offsetY: 0
+      },
+      axisTicks: {
+          show: true,
+          borderType: 'solid',
+          color: '#009B81',
+          width: 6,
+          offsetX: 0,
+          offsetY: 0
+      },
         },
+        yaxis: {
+          labels: {
+            style: {
+              colors: '#009B81',
+            },
+          },
+          axisBorder: {
+          show: true,
+          color: '#009B81',
+          offsetX: 0,
+          offsetY: 0
+      },
+      axisTicks: {
+          show: true,
+          borderType: 'solid',
+          color: '#009B81',
+          width: 6,
+          offsetX: 0,
+          offsetY: 0
+      },
+        },
+        grid: {
+    show: true,
+    borderColor: '#009b819f',
+    strokeDashArray: 0,
+    position: 'back',
+    xaxis: {
+        lines: {
+            show: false
+        }
+    },   
+    yaxis: {
+        lines: {
+            show: true
+        }
+    },},
         tooltip: {
               shared: false,
               x: {
@@ -111,5 +164,6 @@ export default {
   width: 60%;
   position: relative;
   margin-left: 25%;
+  
 }
 </style>
