@@ -56,11 +56,11 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
+      name: 'MF Viewer',
+      short_name: 'MF Viewer',
+      description: 'A simple app to view Mutual Fund data',
       lang: 'en'
     },
-    meta: {
-      name: 'MF Viewer',  
-  },
 },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
