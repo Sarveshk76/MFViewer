@@ -3,18 +3,18 @@
 
     <v-container fluid grid-list-sm>
       <v-card class="searchBar" justify="center">
-        <v-list-item-content>
-          <v-text-field class="centered-input " v-model="searchTerm" placeholder="Search" @change="searchFunds">
+        <v-list-item-content class="px-12">
+          <v-text-field class="centered-input" color="#009B81" v-model="searchTerm" prepend-inner-icon="mdi-magnify" placeholder="Search a Fund" @change="searchFunds">
           </v-text-field>
           {{this.$store.state.args}}
-          <v-icon color="#009B81">mdi-magnify</v-icon>
+          
         </v-list-item-content>
       </v-card>
       <v-layout row wrap>
 
         <v-flex class="d-flex pa-3" xs12 sm3 offset-sm v-for="mf in mf_list" :value="mf.id" :key="mf.id">
 
-          <v-card id="card" elevation="4" @click="$router.push(`/${mf.schemeCode}`)" align="center">
+          <v-card id="card" class="pt-3" elevation="3" @click="$router.push(`/${mf.schemeCode}`)" align="center">
             <v-icon large
       color="teal lighten-2" id="icon">mdi-finance</v-icon>
             <v-card-subtitle class="font-weight-medium teal--text ">
@@ -72,7 +72,7 @@ export default {
 }
 
 #card:hover {
-  transform: scale(1.1);
+  transform: scale(1.08);
 }
 
 .searchBar {
