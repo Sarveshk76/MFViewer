@@ -1,6 +1,7 @@
 {
-  "name": "mfapi_app",
-  "short_name": "mfapi_app",
+  "name": "MF Viewer",
+  "short_name": "MF Viewer",
+  "description": "A simple app to view Mutual Fund data",
   "icons": [
     {
       "src": "/_nuxt/icons/icon_64x64.e3e9fb.png",
