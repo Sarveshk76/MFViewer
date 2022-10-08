@@ -23,7 +23,7 @@
 <script>
 import { mapActions, mapGetters } from 'vuex';
 export default {
-  name: 'InspirePage',
+  name: 'Charts',
   components: {
     [process.browser && 'apexchart']: () => import('vue-apexcharts'),
   },
@@ -104,13 +104,15 @@ export default {
         lines: {
             show: true
         }
-    },},
-        tooltip: {
-              shared: false,
+    },
+  },
+    tooltip: {
+              theme: this.$vuetify.theme.dark ? 'dark' : 'light',
               x: {
             show: true,
             format: "dd MMM yyyy",
-            }
+            },
+            
             }
       },
       series: [
@@ -130,14 +132,12 @@ export default {
       this.$router.go(-1)
     },
     ...mapActions(['get_mfdata']),
-
+    
   },
   created() {
     const scheme = this.$route.params.scheme;
     this.get_mfdata(scheme);
     this.series[0].data = this.mfs;
-    
-
   },
 }
 </script>
@@ -145,11 +145,7 @@ export default {
 #chart {
   border-radius: 30px;
 }
-
-
-
 #back {
-  background-color: #3f51b5;
   color: white;
   border-radius: 15px;
   padding: 10px;
@@ -158,7 +154,6 @@ export default {
 }
 
 #fundname {
-  color: #3f51b5;
   border-radius: 15px;
   padding: 10px;
   width: 60%;
@@ -166,4 +161,5 @@ export default {
   margin-left: 25%;
   
 }
+
 </style>

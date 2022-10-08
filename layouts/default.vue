@@ -7,7 +7,7 @@
     >
     <v-spacer></v-spacer>
       <v-toolbar-title class="font-weight-medium teal--text" v-text="title" />
-      <v-btn class="toggle-btn" @click="$vuetify.theme.dark=!$vuetify.theme.dark"><v-icon color="#009B81">mdi-theme-light-dark</v-icon></v-btn>
+      <v-btn v-if="!this.$route.params.scheme" class="toggle-btn" @click="$vuetify.theme.dark=!$vuetify.theme.dark"><v-icon color="#009B81">mdi-theme-light-dark</v-icon></v-btn>
       <v-spacer />
       
     </v-app-bar>
@@ -31,6 +31,7 @@
 </template>
 
 <script>
+  
 export default {
   name: 'DefaultLayout',
   data () {
