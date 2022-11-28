@@ -12,7 +12,7 @@
 
       <v-col class="text-center mt-10 " align="center" id="chart">
         <v-card align="center">
-          <apexchart type="line" height="350" :options="options" :series="series"></apexchart>
+          <apexchart type="line" height="350" :options="options" :series="mfs"></apexchart>
         </v-card>
       </v-col>
 
@@ -115,12 +115,7 @@ export default {
             
             }
       },
-      series: [
-        {
-          name: "Navs",
-          data: []
-        }
-      ],
+      
 
     };
   },
@@ -137,7 +132,6 @@ export default {
   created() {
     const scheme = this.$route.params.scheme;
     this.get_mfdata(scheme);
-    this.series[0].data = this.mfs;
   },
 }
 </script>

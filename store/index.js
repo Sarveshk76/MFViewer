@@ -2,7 +2,12 @@ import axios from 'axios';
 
 export const state = ()=>({
     mf_list: [],
-    mfs: [],
+    mfs: [
+        {
+          name: "Navs",
+          data: []
+        }
+      ],
     fund_house: [],
     args: "",
 });
@@ -32,7 +37,7 @@ export const mutations =  {
         // console.log(args)
     },
     SET_MF_DATA(state, mfs) {
-        state.mfs = mfs
+        state.mfs[0].data = mfs
     },
     SET_FUND_HOUSE(state, fund_house) {
         state.fund_house = fund_house
@@ -59,6 +64,7 @@ export const actions =  {
                 y: data[i].nav
         })
     }
+    window.dispatchEvent(new Event('resize'))
         commit('SET_MF_DATA', res_data)
         commit('SET_FUND_HOUSE', res.data.meta.fund_house)
     },
